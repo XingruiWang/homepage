@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication id="dynsuperclevr">
+  <title>Compositional 4D Dynamic Scenes Understanding with Physics Priors for Video Question Answering</title>
+  <link>projects/DynSuperCLEVR/</link>
+  <img>projects/DynSuperCLEVR/static/videos/teaser_small.gif</img>
+  <alt>DynSuperCLEVR</alt>
+  <venue>ICLR 2025</venue>
+  <venue-class>blue</venue-class>
+  <tldr>4D neural symbolic model for dynamic spatial reasoning over video with physics priors.</tldr>
+  <authors>
+    <author me="true">
+      <name>Xingrui Wang</name>
+    </author>
+    <author>
+      <name>Wufei Ma</name>
+      <url>https://wufeim.github.io/</url>
+    </author>
+    <author>
+      <name>Angtian Wang</name>
+      <url>https://angtianwang.github.io/</url>
+    </author>
+    <author>
+      <name>Shuo Chen</name>
+      <url>https://chenshuo20.github.io/</url>
+    </author>
+    <author>
+      <name>Adam Kortylewski</name>
+      <url>https://gvrl.mpi-inf.mpg.de/</url>
+    </author>
+    <author>
+      <name>Alan Yuille</name>
+      <url>https://www.cs.jhu.edu/~ayuille/</url>
+    </author>
+  </authors>
+  <links>
+    <link type="paper" href="https://arxiv.org/abs/2406.00622" />
+    <link type="code" href="https://github.com/XingruiWang/SuperCLEVR-Physics" />
+    <link type="project" href="projects/DynSuperCLEVR/" />
+    <link type="data" href="https://huggingface.co/datasets/RyanWW/DynSuperCLEVR" />
+  </links>
+  <topics>
+    <topic>spatial</topic>
+    <topic>video</topic>
+  </topics>
+</publication>

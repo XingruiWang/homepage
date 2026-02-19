@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication id="hve">
+  <title>Contributions of Shape, Texture, and Color in Visual Recognition</title>
+  <link>https://arxiv.org/abs/2207.09510</link>
+  <img>images/papers/HVE.jpg</img>
+  <alt>HVE</alt>
+  <venue>ECCV 2022</venue>
+  <venue-class>blue</venue-class>
+  <tldr>Disentangles the relative contributions of shape, texture, and color to visual recognition using a humanoid vision engine.</tldr>
+  <authors>
+    <author>
+      <name>Yunhao Ge</name>
+      <url>https://gyhandy.github.io/</url>
+    </author>
+    <author>
+      <name>Yao Xiao</name>
+      <url>https://avaxiao.github.io/</url>
+    </author>
+    <author>
+      <name>Zhi Xu</name>
+      <url>https://scholar.google.com/citations?user=NXUbfLYAAAAJ&amp;hl=en</url>
+    </author>
+    <author me="true">
+      <name>Xingrui Wang</name>
+    </author>
+    <author>
+      <name>Laurent Itti</name>
+      <url>https://scholar.google.com/citations?user=xhUvqK8AAAAJ&amp;hl=en</url>
+    </author>
+  </authors>
+  <links>
+    <link type="paper" href="https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136720364.pdf" />
+    <link type="code" href="https://github.com/gyhandy/Humanoid-Vision-Engine" />
+  </links>
+  <topics>
+    <topic>multimodal</topic>
+  </topics>
+</publication>

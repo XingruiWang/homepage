@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Compositional 4D Dynamic Scenes Understanding with Physics Priors for Video Question Answering.">
+  <meta name="keywords" content="DynSuperCLEVR, NS-4DPhysics, SuperCLEVR, 3D spaital reasoning.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compositional 4D Dynamic Scenes Understanding with Physics Priors Video Question Answering</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link rel="preload" as="image" href="./static/videos/teaser.gif" type="image/gif">
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/extra.css">
+  <link rel="icon" href="./static/images/icon_small.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Previous Work
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://lizw14.github.io/project/2023_SuperCLEVR/">
+            SuperCLEVR (CVPR 2023)
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2310.17914">
+            SuperCLEVR 3D (NeurIPS 2023)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <img src="./static/images/icon.png" alt="Icon" class="icon title-icon" style="width: 5rem;height: 5rem;"> 
+          <h1 class="title is-1 publication-title">
+            Compositional 4D Dynamic <br> Scenes Understanding with Physics Priors <br> for Video Question Answering
+          </h1>
+
+<div class="is-size-5 publication-authors">
+  <span class="author-block"><strong><a href="https://xingruiwang.github.io/" target="_blank">Xingrui Wang</a></strong><sup>1</sup>,</span>
+  <span class="author-block"><strong><a href="https://wufeim.github.io/" target="_blank">Wufei Ma</a></strong><sup>1</sup>,</span>
+  <span class="author-block"><strong><a href="https://angtianwang.github.io/" target="_blank">Angtian Wang</a></strong><sup>1</sup>,</span>
+  <span class="author-block"><strong><a href="https://chenshuo20.github.io/" target="_blank">Shuo Chen</a></strong><sup>2</sup>,</span>
+  <span class="author-block"><strong><a href="https://genintel.mpi-inf.mpg.de/" target="_blank">Adam Kortylewski</a></strong><sup>3,4</sup>,</span>
+  <span class="author-block"><strong><a href="https://www.cs.jhu.edu/~ayuille/" target="_blank">Alan Yuille</a></strong><sup>1</sup></span>
+</div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Johns Hopkins University,</span>
+            <span class="author-block"><sup>2</sup>Tsinghua University,</span><br>
+            <span class="author-block"><sup>3</sup>Max Planck Institute for Informatics,</span>
+            <span class="author-block"><sup>4</sup>University of Freiburg</span>
+          </div>
+          <div class="is-size-5 has-text-grey">ICLR 2025</div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+              <span class="link-block">
+                <a href="https://openreview.net/pdf?id=6Vx28LSR7f"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/RyanWW/DynSuperCLEVR"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-database"></i>
+                  </span>
+                  <span>Huggingface</span>
+                </a>
+              </span>
+
+
+
+              <span class="link-block">
+                <a href="https://github.com/XingruiWang/NS-4DPhysics"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code - Model</span>
+                </a>
+              </span>
+              <br>
+              <span class="link-block">
+                <a href="https://github.com/XingruiWang/DynSuperCLEVR"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code - Dataset</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://iclr.cc/virtual/2025/poster/30879"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fas fa-chalkboard"></i>
+                  </span>
+                  <span>Poster</span>
+                </a>
+              </span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <img src="./static/videos/teaser.gif" alt="Teaser" class="teaser-image">
+      <h2 class="subtitle has-text-centered">
+        <!-- <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits. -->
+        We propose <strong>DynSuperCLEVR</strong> for dynamic scene understanding with 4D physical reasoning. It benchmarks models on dynamic properties—<strong>velocity</strong>, <strong>acceleration</strong>, and <strong>collisions</strong>—in 3D space with diverse question types in video-based VQA. We also introduce <strong>NS-4DPhysics</strong>, a neural-symbolic model leveraging physics priors and explicit 4D scene representations to reason about dynamics.      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+          For vision-language models (VLMs), understanding the dynamic properties of objects and their interactions in 3D scenes from videos is crucial for effective reasoning about high-level temporal and action semantics. Although humans are adept at understanding these properties by constructing 3D and temporal (4D) representations of the world, current video understanding models struggle to extract these dynamic semantics, arguably because these models use cross-frame reasoning without underlying knowledge of the 3D/4D scenes.
+        </p>
+        <p>
+          In this work, we introduce <strong>DynSuperCLEVR</strong>, the first video question answering dataset that focuses on language understanding of the dynamic properties of 3D objects. We concentrate on three physical concepts — <em>velocity</em>, <em>acceleration</em>, and <em>collisions</em> within 4D scenes.
+        </p>
+        <p>
+          We further generate three types of questions, including factual queries, future predictions, and counterfactual reasoning that involve different aspects of reasoning about these 4D dynamic properties. To further demonstrate the importance of explicit scene representations in answering these 4D dynamics questions, we propose <strong>NS-4DPhysics</strong>, a Neural-Symbolic VideoQA model integrating <strong>Physics</strong> prior for 4D dynamic properties with explicit scene representation of videos.
+        </p>
+        <p>
+          Instead of answering the questions directly from the video text input, our method first estimates the 4D world states with a 3D generative model powered by physical priors, and then uses neural symbolic reasoning to answer the questions based on the 4D world states. Our evaluation on all three types of questions in DynSuperCLEVR shows that previous video question answering models and large multimodal models struggle with questions about 4D dynamics, while our <strong>NS-4DPhysics</strong> significantly outperforms previous state-of-the-art models. Our code will be available at <a href="https://github.com/XingruiWang/DynSuperCLEVR" target="_blank">https://github.com/XingruiWang/DynSuperCLEVR</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-four-fifths">
+
+      <h2 class="title is-3 has-text-centered">Benchmark - DynSuperCLEVR</h2>
+      <h3 class="title is-4">A. Object assets and Static properties</h3>
+      <div class="content has-text-justified">
+        <p>
+          DynSuperCLEVR focuses on understanding the dynamic behavior of objects in 3D space over time (i.e., 4D reasoning). The benchmark emphasizes the following key physical dynamics:
+        </p>
+        <ul>
+          <li>
+            <strong>Shape</strong>: Each object belongs to a specific category (e.g., SUV, airplane, minivan) with a distinguishable geometric structure.
+          </li>
+          <li>
+            <strong>Color</strong>: Objects are rendered with realistic, diverse colors to support fine-grained visual recognition.
+          </li>
+        </ul>
+        <p>
+          We render the video using <a href="https://github.com/google-research/kubric" target="_blank">Kubric</a>, a scalable video generation engine, and extend it to support dynamic acceleration properties. Our modified codebase is available <a href="https://github.com/XingruiWang/DynSuperCLEVR" target="_blank">here</a>.
+        </p>
+      </div>
+      <h3 class="title is-4">B. Dynamic Properties of objects</h3>
+      <div class="content has-text-justified">
+        <p>
+          DynSuperCLEVR focuses on understanding the dynamic behavior of objects in 3D space over time (i.e., 4D reasoning). The benchmark emphasizes the following key physical dynamics:
+        </p>
+        <ul>
+          <li>
+            <strong>3D Position</strong>: Precise localization of objects over time forms the foundation for dynamic reasoning. Models must track object locations across frames to infer trajectories and interactions.
+          </li>
+          <li>
+            <strong>Velocity</strong>: Captures the rate and direction of object motion. Questions may require comparing object speeds or estimating relative motion between entities.
+          </li>
+          <li>
+            <strong>Acceleration</strong>: Goes beyond constant motion to assess changes in velocity. This is crucial for anticipating object behaviors and interactions.
+          </li>
+          <li>
+            <strong>Collision Events</strong>: Detecting and reasoning about collisions—whether they occur, with whom, and under what circumstances—is a central challenge in dynamic scene understanding.
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="title is-4">C. 3 Types of Questions</h3>
+      <div class="content has-text-justified">
+        <p>
+          To comprehensively evaluate dynamic scene understanding, we introduces <strong> three question types</strong> built upon static object properties, 4D dynamical attributes (velocities and acceleration), and collision events.
+        </p>
+        <ul>
+          <li>
+            <strong>Factual Questions</strong>: These test direct observations from the video, such as identifying object properties or events (e.g., "What color is the vehicle that collides with the minivan?").
+          </li>
+          <li>
+            <strong>Predictive Questions</strong>: Models must anticipate future events based on current dynamics (e.g., "Will the bus collide with the yellow object in the future?").
+          </li>
+          <li>
+            <strong>Counterfactual Questions</strong>: These probe reasoning under alternate dynamics by modifying the initial conditions (e.g., "Would the crash occur if the minivan was stationary from the start?").
+          </li>
+        </ul>
+        <p>
+          Together, these dynamics and question types establish a rigorous benchmark for evaluating video-based VQA models on 4D physical understanding.
+        </p>
+      </div>
+
+      <h2 class="title is-3">Examples</h2>
+      <div class="content has-text-justified">
+
+        <figure class="image" style="max-width: 800px; margin: 0 auto 2em auto;">
+          <img src="./static/images/example.png" alt="Benchmark Example" style="border-radius: 12px;">
+        </figure>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Model - NS-4DPhysics</h2>
+
+        <div class="content has-text-justified">
+          <figure class="image" style="max-width: 800px; margin: 0 auto 2em auto;">
+            <img src="./static/images/model.png" alt="Model structure" style="border-radius: 12px;">
+          </figure>
+
+          <p><strong>NS-4DPhysics</strong> is a neural-symbolic model designed to answer questions about dynamic physical interactions in 3D scenes over time (i.e., 4D). It integrates explicit physical priors and a 3D neural mesh model to parse and simulate scene dynamics.</p>
+
+          <h4>Pipeline Overview</h4>
+          <ol>
+            <li><strong>3D Scene Parser</strong>: Converts videos into 4D scene representations by estimating object pose and state using a neural mesh model.</li>
+            <li><strong>Question Parser</strong>: Translates natural language questions into symbolic programs.</li>
+            <li><strong>Program Executor</strong>: Executes symbolic programs over the 4D scene representations to produce answers.</li>
+          </ol>
+
+          <h4>3D Scene Parsing</h4>
+          <ul>
+            <li>
+              The parser uses a <strong>render-and-compare</strong> approach via a 3D neural mesh model to estimate 6D object poses from images.
+            </li>
+            <li>
+              It is trained by aligning 3D-rendered features with 2D image features, enabling robust object pose and category inference.
+            </li>
+            <li>
+              At inference time, physical priors from previous frames are incorporated to improve consistency and realism.
+            </li>
+          </ul>
+
+          <h4>Physical Prior Integration</h4>
+          <ul>
+            <li>
+              Prior states <code>(R<sub>t-1</sub>, T<sub>t-1</sub>)</code> are propagated using a differentiable physics engine (PyBullet), producing a probabilistic estimate of the next state.
+            </li>
+            <li>
+              The prediced scene dynamics are used in simulated either for future prediction or counterfactual reasoning.
+            </li>
+            <li>
+              The system supports analysis-by-synthesis through likelihood estimation between rendered and observed images.
+            </li>
+          </ul>
+
+          <p>
+            By explicitly modeling physical dynamics and incorporating symbolic reasoning, NS-4DPhysics significantly improves performance on complex VideoQA tasks involving 4D scene understanding.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-four-fifths">
+
+      <h2 class="title is-3">Experiments Results</h2>
+      <div class="content has-text-justified">
+        <p>
+          We compare the <strong>NS-4DPhysics</strong> model with a range of baseline models on the DynSuperCLEVR benchmark for video question answering. The evaluation covers three question types—factual, predictive, and counterfactual—with factual questions further split into velocity, acceleration, and collision sub-types. As shown in the table, <strong>NS-4DPhysics</strong> significantly outperforms all baselines across all question types, highlighting the effectiveness of explicit 4D scene representations with physics priors.
+        </p>
+
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-fullwidth is-hoverable is-size-7">
+            <thead>
+              <tr>
+                <th rowspan="2">Model</th>
+                <th rowspan="2">Average</th>
+                <th colspan="4">Factual</th>
+                <th rowspan="2">Predictive</th>
+                <th rowspan="2">Counterfactual</th>
+              </tr>
+              <tr>
+                <th>All</th>
+                <th>Vel.</th>
+                <th>Acc.</th>
+                <th>Col.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CNN+LSTM</td>
+                <td>48.03</td>
+                <td>40.63</td>
+                <td>41.71</td>
+                <td>56.79</td>
+                <td>25.37</td>
+                <td>56.04</td>
+                <td>47.42</td>
+              </tr>
+              <tr>
+                <td>FiLM (Perez et al., 2018)</td>
+                <td>50.18</td>
+                <td>44.07</td>
+                <td>48.58</td>
+                <td>53.09</td>
+                <td>26.87</td>
+                <td>54.94</td>
+                <td>51.54</td>
+              </tr>
+              <tr>
+                <td>NS-DR (Yi et al., 2019)</td>
+                <td>51.44</td>
+                <td>51.44</td>
+                <td>55.63</td>
+                <td>46.34</td>
+                <td>46.86</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td><u>PO3D-VQA</u> (Wang et al., 2024)</td>
+                <td>62.93</td>
+                <td><u>61.22</u></td>
+                <td><u>62.21</u></td>
+                <td><u>73.17</u></td>
+                <td><u>51.20</u></td>
+                <td>65.33</td>
+                <td>62.24</td>
+              </tr>
+              <tr>
+                <td>InternVideo (Wang et al., 2022)</td>
+                <td>52.62</td>
+                <td>51.07</td>
+                <td>59.29</td>
+                <td>49.08</td>
+                <td>36.06</td>
+                <td>54.74</td>
+                <td>59.18</td>
+              </tr>
+              <tr>
+                <td>Video-LLaVA<sup>†</sup> (Lin et al., 2023)</td>
+                <td>38.09</td>
+                <td>37.04</td>
+                <td>37.62</td>
+                <td>52.76</td>
+                <td>23.56</td>
+                <td>38.78</td>
+                <td>40.88</td>
+              </tr>
+              <tr>
+                <td>PLLaVA<sup>†</sup> (Xu et al., 2024)</td>
+                <td>59.24</td>
+                <td>54.61</td>
+                <td>55.00</td>
+                <td>63.80</td>
+                <td>46.63</td>
+                <td><u>67.52</u></td>
+                <td><u>73.47</u></td>
+              </tr>
+              <tr>
+                <td>GPT-4o<sup>†</sup></td>
+                <td>51.59</td>
+                <td>50.82</td>
+                <td>51.19</td>
+                <td>57.67</td>
+                <td>44.71</td>
+                <td>54.38</td>
+                <td>50.00</td>
+              </tr>
+              <tr>
+                <td>GPT-4o + reasoning<sup>†</sup></td>
+                <td>56.06</td>
+                <td>55.50</td>
+                <td>58.81</td>
+                <td>57.67</td>
+                <td>47.12</td>
+                <td>56.93</td>
+                <td>58.16</td>
+              </tr>
+              <tr>
+                <td><strong>NS-4DPhysics</strong></td>
+                <td><strong>82.64</strong></td>
+                <td><strong>87.70</strong></td>
+                <td><strong>88.66</strong></td>
+                <td><strong>83.73</strong></td>
+                <td><strong>88.46</strong></td>
+                <td><strong>85.71</strong></td>
+                <td><strong>74.51</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+        <!-- 
+        <h2 class="title is-3">Download</h2>
+        <div class="content has-text-justified">
+          <p>
+            You can access the full Spatial457 dataset and evaluation toolkit via the following links:
+          </p>
+          <ul>
+            <li>
+              <strong>Dataset on Hugging Face:</strong>
+              <a href="https://huggingface.co/datasets/RyanWW/Spatial457" target="_blank">
+                https://huggingface.co/datasets/RyanWW/Spatial457
+              </a>
+            </li>
+            <li>
+              <strong>Code & Benchmarking Scripts:</strong>
+              <a href="https://github.com/XingruiWang/Spatial457" target="_blank">
+                https://github.com/XingruiWang/Spatial457
+              </a>
+            </li>
+            <li>
+              <strong>Paper:</strong>
+              <a href="https://arxiv.org/abs/2502.08636" target="_blank">
+                https://arxiv.org/abs/2502.08636
+              </a>
+            </li>
+          </ul>
+        </div> -->
+
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+  </div>
+</section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{wang2024compositional,
+  title     = {Compositional 4D Dynamic Scenes Understanding with Physics Priors for Video Question Answering},
+  author    = {Wang, Xingrui and Ma, Wufei and Wang, Angtian and Chen, Shuo and Kortylewski, Adam and Yuille, Alan},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025},
+  url       = {https://openreview.net/pdf?id=6Vx28LSR7f}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is build from the template by <a rel="nerfies" href="https://nerfies.github.io">Nerfies</a>.This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

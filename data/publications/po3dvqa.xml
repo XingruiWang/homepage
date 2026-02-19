@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication id="po3dvqa">
+  <title>3D-Aware Visual Question Answering about Parts, Poses and Occlusions</title>
+  <link>https://arxiv.org/abs/2310.17914</link>
+  <img>images/papers/neurips2023.png</img>
+  <alt>PO3D-VQA</alt>
+  <venue>NeurIPS 2023</venue>
+  <venue-class>blue</venue-class>
+  <tldr>A 3D-aware VQA benchmark and model for compositional visual reasoning with pose and occlusion understanding.</tldr>
+  <authors>
+    <author me="true">
+      <name>Xingrui Wang</name>
+    </author>
+    <author>
+      <name>Wufei Ma</name>
+      <url>https://wufeim.github.io/</url>
+    </author>
+    <author>
+      <name>Zhuowan Li</name>
+      <url>https://lizw14.github.io/</url>
+    </author>
+    <author>
+      <name>Adam Kortylewski</name>
+      <url>https://gvrl.mpi-inf.mpg.de/</url>
+    </author>
+    <author>
+      <name>Alan Yuille</name>
+      <url>https://www.cs.jhu.edu/~ayuille/</url>
+    </author>
+  </authors>
+  <links>
+    <link type="paper" href="https://arxiv.org/abs/2310.17914" />
+    <link type="code" href="https://github.com/XingruiWang/3D-Aware-VQA" />
+    <link type="data" href="https://github.com/XingruiWang/superclevr-3D-question" />
+    <link type="poster" href="https://nips.cc/virtual/2023/poster/72544" />
+  </links>
+  <topics>
+    <topic>spatial</topic>
+  </topics>
+</publication>

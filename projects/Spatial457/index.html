@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Spatial457: A Diagnostic Benchmark for 6D Spatial Reasoning
+of Large Multimodal Models.">
+  <meta name="keywords" content="Spatial457, PulseCheck457, SuperCLEVR, 3D spaital reasoning.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spatial457: A Diagnostic Benchmark for 6D Spatial Reasoning
+of Large Multimodal Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/extra.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Previous Work
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://lizw14.github.io/project/2023_SuperCLEVR/">
+            SuperCLEVR
+          </a>
+          <a class="navbar-item" href="https://arxiv.org/abs/2310.17914">
+            SuperCLEVR 3D
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            Spatial457  <img src="./static/images/icon.png" alt="Icon" class="icon title-icon" > 
+            A Diagnostic Benchmark <br> for 6D Spatial Reasoning<br>
+            of Large Multimodal Models
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://xingruiwang.github.io/">Xingrui Wang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wufeim.github.io/">Wufei Ma</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ollie-ztz.github.io/Tiezheng.github.io/">Tiezheng Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://celsodemelo.net/">Celso M de Melo</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://beckschen.github.io/">Jieneng Chen</a><sup>1</sup><sup>†</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.cs.jhu.edu/~ayuille/">Alan Yuille</a><sup>1</sup><sup>†</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Johns Hopkins University,</span>
+            <span class="author-block"><sup>2</sup>DEVCOM Army Research Laboratory</span>
+          </div>
+          <div class="is-size-6 has-text-grey"><sup>†</sup> Equal advising</div>
+          <div class="is-size-5 has-text-grey">CVPR 2025 (Highlight, 13.5% accepted papers)</div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2502.08636"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/XingruiWang/Spatial457"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/RyanWW/Spatial457"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-database"></i>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/RyanWW/Spatial457_20k"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-database"></i>
+                    </span>
+                    <span>Training Dataset</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <img src="./static/images/teaser.png" alt="Teaser" class="teaser-image">
+      <h2 class="subtitle has-text-centered">
+        <!-- <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+        free-viewpoint
+        portraits. -->
+        We propose <span class="spatial-highlight">Spatial457</span> for spatial reasoning with <strong>4 key capabilities</strong>. 
+        It evaluates models through <strong>5 difficulty levels </strong> and <strong>7 question types</strong>, from simple object recognition to complex 6D spatial reasoning tasks.
+        We benchmarks SoTA models and reveal a gap between human reasoning in spatial VQA.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Although large multimodal models (LMMs) have demonstrated remarkable capabilities in visual scene interpretation and reasoning, their capacity for complex and precise 3-dimensional spatial reasoning remains uncertain. Existing benchmarks focus predominantly on 2D spatial understanding and lack a framework to comprehensively evaluate 6D spatial reasoning across varying complexities.
+      </p>
+      <p>
+        To address this limitation, we present <span class="spatial-highlight">Spatial457</span>, a scalable and unbiased synthetic dataset designed with <strong>4 key capabilities</strong> for spatial reasoning:
+        <span class="cap-inline cap-multi">
+          <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+          <strong>Multiple Objects</strong>
+        </span>,
+        <span class="cap-inline cap-2d">
+          <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+          <strong>2D Locations</strong>
+        </span>,
+        <span class="cap-inline cap-3d">
+          <img src="./static/images/3d.png" class="cap-icon" alt="icon">
+          <strong>3D Locations</strong>
+        </span>,
+        <span class="cap-inline cap-orient">
+          <img src="./static/images/orientation.png" class="cap-icon" alt="icon">
+          <strong>3D Orientations</strong>
+        </span>.
+      </p>
+      <p>
+        We develop a cascading evaluation structure, constructing <strong>7 question types</strong> across <strong>5 difficulty levels</strong> that range from basic single object recognition to our new proposed complex 6D spatial reasoning tasks.
+      </p>
+      <p>
+        We evaluated various large multimodal models (LMMs) on <span class="spatial-highlight">Spatial457</span>, observing a general decline in performance as task complexity increases, particularly in 3D reasoning and 6D spatial tasks. To quantify these challenges, we introduce the Relative Performance Dropping Rate (RPDR), highlighting key weaknesses in 3D reasoning capabilities. Leveraging the unbiased attribute design of our dataset, we also uncover prediction biases across different attributes, with similar patterns observed in real-world image settings.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    <!--/ Abstract. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered ">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Benchmark Design</h2>
+        <!-- <p>
+        The 3D spatial reasoning is a challenging task for many existing large multimodal models (LMMs). To comprehensively evaluate the spatial reasoning capabilities of LMMs, we define 4 key capabilities in spatial reasoning.</p>
+        <br> -->
+        
+        <h3 class="title is-4">4 Key Capabilities for 3D Spatial Reasoning</h3>
+
+        <div class="content has-text-justified">
+          <p>
+             We first define 4 basic capabilities that a model requires for 3D spatial reasoning.
+        <ul>
+          <li>
+            <span class="cap-inline cap-multi">
+              <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+              <strong>Multiple Objects</strong>
+            </span>: The foundation of spatial reasoning involves recognizing multiple objects and understanding their relationships. Tasks include comparing attributes and counting, such as verifying how many objects share the same color.
+          </li>
+          <li>
+            <span class="cap-inline cap-2d">
+              <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+              <strong>2D Locations</strong>
+            </span>: Reasoning within the 2D camera plane by identifying relative positions like left, right, front, or back. These are basic but crucial cues, especially for grounding object relationships from a single-view image.
+          </li>
+          <li>
+            <span class="cap-inline cap-3d">
+              <img src="./static/images/3d.png" class="cap-icon" alt="icon">
+              <strong>3D Locations</strong>
+            </span>: Understanding object depth and position in 3D space enables reasoning about occlusion, distance, and spatial hierarchy between objects beyond the image plane;
+          </li>
+          <li>
+            <span class="cap-inline cap-orient">
+              <img src="./static/images/orientation.png" class="cap-icon" alt="icon">
+              <strong>3D Orientations</strong>
+            </span>: This involves inferring object rotation, facing direction, and alignment. Tasks test the ability to determine if an object is facing forward, backward, or parallel to another from its own perspective—not just from the camera view;
+          </li>
+        </ul>
+          </p>
+        </div>
+
+        <h3 class="title is-4">5 Difficulty Levels and 7 Subsets</h3>
+        <div class="content has-text-justified">
+        <p>
+        To systematically evaluate spatial reasoning in large multimodal models (LMMs), we propose a <strong>five-level difficulty roadmap</strong> that progressively incorporates our four core spatial capabilities—<em>multiple objects</em>, <em>2D location</em>, <em>3D location</em>, and <em>3D orientation</em>. This design allows for a fine-grained analysis of model performance as task complexity increases.
+        </p>
+
+        <ul>
+          <li><strong>Level 1–3 (Basic Spatial Reasoning):</strong> These levels begin with fundamental perception tasks. <strong>L1</strong> involves single-object recognition, <strong>L2</strong> introduces multi-object comparisons (e.g., color matching), and <strong>L3</strong> tests 2D spatial relationships within the image plane.</li>
+
+          <li><strong>Level 4 (3D Pose and Occlusion):</strong> These subsets assess a model’s ability to reason about <strong>3D orientation</strong> (e.g., object alignment and rotation) and <strong>3D location</strong> (e.g., identifying occluded objects), requiring depth-aware perception.</li>
+
+          <li><strong>Level 5 (Advanced 6D Reasoning):</strong> The most complex level involves full <strong>6D spatial reasoning</strong>—including both 3D location and orientation—and physical interaction tasks such as <em>6D spatial relationship</em> and <em>collision prediction</em>. These questions demand comprehensive scene understanding and future state inference.</li>
+        </ul>
+
+        <p>
+        This cascading structure reveals distinct failure points as tasks increase in complexity. Examples for each level are shown below.
+        </p>
+        </div>
+          
+        <h2 class="title is-3">Example Questions</h2>
+        <div class="content has-text-justified">
+
+          <figure class="image" style="max-width: 400px; margin: 0 auto 2em auto;">
+            <img src="./static/images/examples/example1.png" alt="All Difficulty Levels Example" style="border-radius: 12px;">
+          </figure>
+
+          <div class="timeline-container">
+          <!-- L1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L1</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">Single Object</h4>
+              <p><strong>Q:</strong> What color is the double bus?</p>
+              <p><strong>A:</strong> Cyan.</p>
+            </div>
+          </div>
+
+          <!-- L2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L2</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">Multiple objects
+              <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+              </h4>
+              <p><strong>Q:</strong> Is there another object of the same color as the double bus?</p>
+              <p><strong>A:</strong> Yes</p>
+            </div>
+          </div>
+
+          <!-- L3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L3</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">
+                2D Spatial Relationship
+                <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+               <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+              </h4>
+              <p><strong>Q:</strong> There is a cyan object to the left of the chopper; what is its shape?</p>
+              <p><strong>A:</strong> Double bus.</p>
+            </div>
+          </div>
+
+          <!-- L4 Orientation -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L4</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">Orientation
+                <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+               <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+              <img src="./static/images/orientation.png" class="cap-icon" alt="icon">
+              </h4>
+              <p><strong>Q:</strong> What shape is the cyan object parallel to the brown one?</p>
+              <p><strong>A:</strong> Double bus</p>
+            </div>
+          </div>
+
+          <!-- L4 Occlusion -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L4</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">Occlusion
+                <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+               <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+              <img src="./static/images/3d.png" class="cap-icon" alt="icon">
+              </h4>
+              <p><strong>Q:</strong> What size is the thing occluded by the double bus?</p>
+              <p><strong>A:</strong> Small</p>
+            </div>
+          </div>
+
+          <!-- L5 Spatial -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L5</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">6D Spatial Relationship
+                <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+               <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+              <img src="./static/images/3d.png" class="cap-icon" alt="icon">
+              <img src="./static/images/orientation.png" class="cap-icon" alt="icon">
+              </h4>
+              <p><strong>Q:</strong> Is there a double bus to the left of the yellow object?</p>
+              <p><strong>A:</strong> No</p>
+            </div>
+          </div>
+
+          <!-- L5 Collision -->
+          <div class="timeline-item">
+            <div class="timeline-marker">L5</div>
+            <div class="timeline-content">
+              <h4 class="timeline-title">Collision
+                <img src="./static/images/recognition.png" class="cap-icon" alt="icon">
+                <img src="./static/images/2d.png" class="cap-icon" alt="icon">
+              <img src="./static/images/3d.png" class="cap-icon" alt="icon">
+              <img src="./static/images/orientation.png" class="cap-icon" alt="icon">
+              </h4>
+              <p><strong>Q:</strong> What color is the object the double bus will collide with if it moves backward?</p>
+              <p><strong>A:</strong> Yellow</p>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="title is-3">Benchmark Features</h2>
+        <div class="content has-text-justified">
+          <ul>
+            <li><strong>Controllable generation:</strong> All scenes are rendered using a fully programmatic engine, enabling fine-grained control over object placement, shape, color to support targeted evaluation of reasoning skills.</li>
+            <li><strong>Rich 3D annotations:</strong> Every sample includes precise object metadata such as 2D bounding box, 2D instance mask, world space 3D locations, 3D orientations.</li>
+            <li><strong>Compositional reasoning templates:</strong> As a neural-symbolic benchmark, each question is grounded in a step-by-step reasoning program that guides the model toward the correct answer.</li>
+
+          </ul>
+        </div>
+        
+<h2 class="title is-3">Benchmark Results</h2>
+<div class="content has-text-justified">
+  <p>
+    We evaluate a range of models on all 7 question types across 5 difficulty levels. As the complexity increases—from single-object perception to 6D spatial reasoning and collision prediction—model performance generally drops, highlighting challenges in multi-object understanding, 3D orientation, and predictive spatial reasoning.
+  </p>
+
+  <div class="table-container">
+    <table class="table is-bordered is-striped is-fullwidth is-hoverable is-size-7">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Single Object</th>
+          <th>Multi-Obj.</th>
+          <th>2D Spatial</th>
+          <th>Occlusion</th>
+          <th>3D Pose</th>
+          <th>Collisions</th>
+          <th>6D Spatial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Random</strong></td><td>33.05</td><td>32.77</td><td>33.47</td><td>22.04</td><td>18.99</td><td>21.02</td><td>19.41</td></tr>
+        <tr><td>GPT-4o</td><td><span style="color: #d33; font-weight: bold;">74.46</span></td><td>62.88</td><td>56.14</td><td>48.40</td><td>42.41</td><td>38.41</td><td>37.01</td></tr>
+        <tr><td>Gemini-Pro 1.5</td><td>73.26</td><td>62.54</td><td>54.49</td><td>47.65</td><td>43.67</td><td><span style="text-decoration: underline;">41.19</span></td><td><span style="text-decoration: underline;">39.36</span></td></tr>
+        <tr><td>Claude 3.5 Sonnet</td><td>68.24</td><td>57.40</td><td>54.19</td><td>30.84</td><td>38.40</td><td>35.34</td><td>33.48</td></tr>
+        <tr><td>Qwen2-VL-7B-Instruct</td><td><span style="color: #3273dc; font-weight: bold;">71.96</span></td><td><span style="color: #3273dc;">61.44</span></td><td><span style="color: #3273dc;">55.34</span></td><td>27.87</td><td>34.29</td><td>36.58</td><td>33.75</td></tr>
+        <tr><td>InternVL2-8B</td><td>58.11</td><td>58.76</td><td><span style="text-decoration: underline;">57.40</span></td><td><span style="text-decoration: underline;">33.25</span></td><td>32.32</td><td>34.30</td><td>34.30</td></tr>
+        <tr><td>LLaVA-v1.5-7B</td><td>44.87</td><td>44.72</td><td>42.20</td><td>24.34</td><td>24.55</td><td>23.63</td><td>23.86</td></tr>
+        <tr><td>LLaVA-NeXT-vicuna-7B</td><td>50.72</td><td>49.47</td><td>46.01</td><td>29.68</td><td>29.35</td><td>31.95</td><td>31.95</td></tr>
+        <tr><td>LLaVA-NeXT-llama3-8B</td><td>52.15</td><td>49.73</td><td>45.92</td><td>30.31</td><td>29.77</td><td>32.12</td><td>32.12</td></tr>
+        <tr><td>PO3D-VQA</td><td>86.46</td><td>82.55</td><td>80.64</td><td>70.49</td><td>81.40</td><td>68.12</td><td>71.06</td></tr>
+        <tr><td><strong>Human</strong></td><td><strong>89.97</strong></td><td><strong>86.83</strong></td><td><strong>84.95</strong></td><td><strong>82.76</strong></td><td><strong>84.95</strong></td><td><strong>81.82</strong></td><td><strong>79.94</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+        <!-- <h2 class="title is-3">Extensions</h2>
+        <div class="content has-text-justified">
+          <p>
+            [You can continue expanding here...]
+          </p>
+        </div> -->
+
+        <h2 class="title is-3">Download</h2>
+        <div class="content has-text-justified">
+          <p>
+            You can access the full Spatial457 dataset and evaluation toolkit via the following links:
+          </p>
+          <ul>
+            <li>
+              <strong>Dataset on Hugging Face:</strong>
+              <a href="https://huggingface.co/datasets/RyanWW/Spatial457" target="_blank">
+                https://huggingface.co/datasets/RyanWW/Spatial457
+              </a>
+            </li>
+            <li>
+              <strong>Code & Benchmarking Scripts:</strong>
+              <a href="https://github.com/XingruiWang/Spatial457" target="_blank">
+                https://github.com/XingruiWang/Spatial457
+              </a>
+            </li>
+            <li>
+              <strong>Paper:</strong>
+              <a href="https://arxiv.org/abs/2502.08636" target="_blank">
+                https://arxiv.org/abs/2502.08636
+              </a>
+            </li>
+          </ul>
+          <p>Although not included in the paper, we also provide a <a href="https://huggingface.co/datasets/RyanWW/Spatial457_20k">20k-image version</a> under the same settings for those interested in model training. Our data generation pipeline is also available to generate as much data as needed. </p>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+
+  </div>
+</section> -->
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{wang2025spatial457,
+  title     = {Spatial457: A Diagnostic Benchmark for 6D Spatial Reasoning of Large Multimodal Models},
+  author    = {Wang, Xingrui and Ma, Wufei and Zhang, Tiezheng and de Melo, Celso M and Chen, Jieneng and Yuille, Alan},
+  journal   = {CVPR},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/2502.08636}
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is build from the template by <a rel="nerfies" href="https://nerfies.github.io">Nerfies</a>.This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

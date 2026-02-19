@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication id="keyvid">
+  <title>KeyVID: Keyframe-Aware Video Diffusion for Audio-Synchronized Visual Animation</title>
+  <link>projects/KeyVID/</link>
+  <img>projects/KeyVID/static/videos/teaser_small.gif</img>
+  <alt>KeyVID</alt>
+  <venue>Arxiv 2025</venue>
+  <venue-class>grey</venue-class>
+  <tldr>Audio-guided keyframe selection for temporally aligned video diffusion generation.</tldr>
+  <authors>
+    <author me="true">
+      <name>Xingrui Wang</name>
+    </author>
+    <author>
+      <name>Jiang Liu</name>
+      <url>https://joellliu.github.io/</url>
+    </author>
+    <author>
+      <name>Ze Wang</name>
+      <url>https://zewang95.github.io/</url>
+    </author>
+    <author>
+      <name>Xiaodong Yu</name>
+      <url>https://www.xiaodongyu.me/</url>
+    </author>
+    <author>
+      <name>Jialian Wu</name>
+      <url>https://jialianwu.com/</url>
+    </author>
+    <author>
+      <name>Ximeng Sun</name>
+      <url>https://sunxm2357.github.io/</url>
+    </author>
+    <author>
+      <name>Yusheng Su</name>
+      <url>https://yushengsu-thu.github.io/</url>
+    </author>
+    <author>
+      <name>Alan Yuille</name>
+      <url>https://www.cs.jhu.edu/~ayuille/</url>
+    </author>
+    <author>
+      <name>Zicheng Liu</name>
+      <url>https://zicliu.wixsite.com/mysite</url>
+    </author>
+    <author>
+      <name>Emad Barsoum</name>
+      <url>https://scholar.google.com/citations?user=bX1YILcAAAAJ&amp;hl=en</url>
+    </author>
+  </authors>
+  <links>
+    <link type="paper" href="https://arxiv.org/pdf/2504.09656" />
+    <link type="code" href="https://github.com/XingruiWang/KeyVID" />
+    <link type="project" href="projects/KeyVID/" />
+  </links>
+  <topics>
+    <topic>video</topic>
+    <topic>multimodal</topic>
+  </topics>
+</publication>

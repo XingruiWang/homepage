@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication id="superclevr">
+  <title>Super-CLEVR: A Virtual Benchmark to Diagnose Domain Robustness in Visual Reasoning</title>
+  <link>https://arxiv.org/abs/2212.00259</link>
+  <img>images/papers/superclevr.jpg</img>
+  <alt>SuperCLEVR</alt>
+  <venue>CVPR 2023</venue>
+  <venue-class>gold</venue-class>
+  <highlight>Highlight</highlight>
+  <tldr>A synthetic benchmark exposing domain robustness gaps in visual reasoning models across appearance, viewpoint, and co-occurrence shifts.</tldr>
+  <authors>
+    <author>
+      <name>Zhuowan Li</name>
+      <url>https://lizw14.github.io/</url>
+    </author>
+    <author me="true">
+      <name>Xingrui Wang</name>
+    </author>
+    <author>
+      <name>Elias Stengel-Eskin</name>
+      <url>https://esteng.github.io/</url>
+    </author>
+    <author>
+      <name>Adam Kortylewski</name>
+      <url>https://gvrl.mpi-inf.mpg.de/</url>
+    </author>
+    <author>
+      <name>Wufei Ma</name>
+      <url>https://wufeim.github.io/</url>
+    </author>
+    <author>
+      <name>Benjamin Van Durme</name>
+      <url>https://www.cs.jhu.edu/~vandurme/</url>
+    </author>
+    <author>
+      <name>Alan Yuille</name>
+      <url>https://www.cs.jhu.edu/~ayuille/</url>
+    </author>
+  </authors>
+  <links>
+    <link type="paper" href="https://arxiv.org/pdf/2212.00259.pdf" />
+    <link type="code" href="https://github.com/Lizw14/Super-CLEVR" />
+    <link type="project" href="https://lizw14.github.io/project/2023_SuperCLEVR" />
+  </links>
+  <topics>
+    <topic>spatial</topic>
+  </topics>
+</publication>

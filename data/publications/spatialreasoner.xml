@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publication id="spatialreasoner">
+  <title>SpatialReasoner: Towards Explicit and Generalizable 3D Spatial Reasoning</title>
+  <link>https://spatial-reasoner.github.io/</link>
+  <img>images/papers/spatialreasoner.png</img>
+  <alt>SpatialReasoner</alt>
+  <venue>NeurIPS 2025</venue>
+  <venue-class>blue</venue-class>
+  <tldr>Enables LLMs to explicitly reason about 3D spatial relationships through structured representations.</tldr>
+  <authors>
+    <author>
+      <name>Wufei Ma*</name>
+      <url>https://wufeim.github.io/</url>
+    </author>
+    <author>
+      <name>Yu-Cheng Chou*</name>
+      <url>https://sites.google.com/view/yu-cheng-chou</url>
+    </author>
+    <author>
+      <name>Qihao Liu*</name>
+      <url>https://qihao067.github.io/</url>
+    </author>
+    <author me="true">
+      <name>Xingrui Wang</name>
+    </author>
+    <author>
+      <name>Jieneng Chen</name>
+      <url>https://beckschen.github.io/</url>
+    </author>
+    <author>
+      <name>Jianwen Xie</name>
+      <url>http://www.stat.ucla.edu/~jxie/</url>
+    </author>
+    <author>
+      <name>Alan Yuille</name>
+      <url>https://www.cs.jhu.edu/~ayuille/</url>
+    </author>
+  </authors>
+  <links>
+    <link type="paper" href="https://arxiv.org/abs/2504.20024" />
+    <link type="code" href="https://spatial-reasoner.github.io/#opensource" />
+    <link type="project" href="https://spatial-reasoner.github.io/" />
+  </links>
+  <topics>
+    <topic>spatial</topic>
+  </topics>
+</publication>

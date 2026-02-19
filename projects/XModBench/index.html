@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="XModBench: Benchmarking Cross-Modal Capabilities and Consistency in Omni-Language Models">
+  <meta name="keywords" content="XModBench, Cross-Modal, Omni-Language Models, Language Models, Multimodal Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XModBench: Benchmarking Cross-Modal Capabilities and Consistency in Omni-Language Models</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.65;
+      color: #2d3748;
+      background: #ffffff;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      color: #1a202c;
+      line-height: 1.3;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+
+    /* Header */
+    .header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 16px 0;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: #2b6cb0;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #4a5568;
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #2b6cb0;
+    }
+
+    /* Main sections */
+    .section {
+      padding: 40px 0;
+    }
+
+    .section:first-of-type {
+      padding-top: 120px;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+      margin: 10px 0;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 80px 0 0;
+    }
+
+    .title-container {
+      margin-bottom: 48px;
+    }
+
+    .hero-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 24px;
+      display: block;
+    }
+
+    .hero-title {
+      margin-bottom: 16px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: #4a5568;
+      font-weight: 400;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Authors */
+    .authors-section {
+      margin: 48px 0;
+    }
+
+    .authors {
+      font-size: 18px;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .author-block {
+      display: inline;
+      margin-right: 16px;
+    }
+
+    .author-block a {
+      color: #2b6cb0;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .author-block a:hover {
+      border-bottom-color: #2b6cb0;
+    }
+
+    .affiliations {
+      font-size: 16px;
+      color: #718096;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .publication-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      background: #f7fafc;
+      color: #2d3748;
+      text-decoration: none;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #edf2f7;
+      border-color: #cbd5e0;
+      transform: translateY(-1px);
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    /* Teaser Section */
+    .video-section {
+      margin: 0px 0 30px 0;
+    }
+
+    .teaser-image {
+      width: 100%;
+      max-width: 900px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 0 auto 2rem auto;
+      display: block;
+    }
+
+    .video-description {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 17px;
+      color: #4a5568;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* Content sections */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 48px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 48px 0 24px;
+      color: #2d3748;
+      letter-spacing: -0.3px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .content p {
+      margin-bottom: 24px;
+      color: #4a5568;
+    }
+
+    .content a {
+      color: #2b6cb0;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .content a:hover {
+      border-bottom-color: #2b6cb0;
+    }
+
+    .content ul, .content ol {
+      margin: 24px 0;
+      padding-left: 24px;
+    }
+
+    .content li {
+      margin-bottom: 12px;
+      color: #4a5568;
+    }
+
+    .highlight {
+      background: #ebf8ff;
+      color: #2b6cb0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-weight: 600;
+    }
+
+    /* Stats boxes */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .stat-box {
+      background: #f7fafc;
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #2b6cb0;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: #718096;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Task cards */
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .task-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.2s ease;
+    }
+
+    .task-card:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .task-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      color: #2b6cb0;
+    }
+
+    .task-card h4 {
+      margin-bottom: 12px;
+      color: #1a202c;
+    }
+
+    .task-card p {
+      font-size: 15px;
+      color: #718096;
+      line-height: 1.6;
+    }
+
+    .subtask-list {
+      list-style: none;
+      margin-top: 16px;
+      padding-left: 0;
+    }
+
+    .subtask-list li {
+      font-size: 14px;
+      color: #4a5568;
+      padding: 6px 0;
+      border-bottom: 1px solid #f7fafc;
+    }
+
+    .subtask-list li:before {
+      content: "→ ";
+      color: #2b6cb0;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    /* Images */
+    .section-image {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 48px auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .pipeline-image {
+      max-width: 90%;
+    }
+    .distribution-image {
+      max-width: 40%;
+    }
+
+    /* Feature boxes */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 32px;
+      margin: 48px 0;
+    }
+
+    .feature-box {
+      padding: 32px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 12px;
+      color: white;
+      text-align: center;
+    }
+
+    .feature-box h4 {
+      color: white;
+      margin-bottom: 16px;
+      font-size: 1.25rem;
+    }
+
+    .feature-box p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Citation */
+    .citation-section {
+      background: #f7fafc;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .citation-section h2 {
+      color: #2d3748;
+      margin-bottom: 32px;
+    }
+
+    .citation-code {
+      background: #1a202c;
+      color: #e2e8f0;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      border: 1px solid #2d3748;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f7fafc;
+      padding: 48px 0;
+      text-align: center;
+      font-size: 15px;
+      color: #718096;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer a {
+      color: #2b6cb0;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Scroll to top */
+    .scroll-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #2b6cb0;
+      color: white;
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+    }
+
+    .scroll-top:hover {
+      background: #2c5282;
+      transform: translateY(-2px);
+    }
+
+    .scroll-top.visible {
+      display: flex;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 16px;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .authors {
+        font-size: 16px;
+        line-height: 2;
+      }
+      
+      .author-block {
+        display: block;
+        margin: 0 8px 8px 0;
+      }
+      
+      .section {
+        padding: 60px 0;
+      }
+      
+      .section:first-of-type {
+        padding-top: 50px;
+      }
+
+      .stats-grid, .task-grid, .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.3rem; }
+      
+      .content {
+        font-size: 16px;
+      }
+      
+      .video-description {
+        font-size: 16px;
+      }
+    }
+  </style>
+  <style>
+    /* Add to existing styles */
+    .impact-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .problem-box {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 32px;
+      border-radius: 12px;
+      margin: 32px 0;
+      box-shadow: 0 8px 30px rgba(240, 147, 251, 0.3);
+    }
+
+    .problem-box h3 {
+      color: white;
+      margin-bottom: 16px;
+      font-size: 1.5rem;
+    }
+
+    .problem-box p {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .impact-card {
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .impact-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .impact-card:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+      border-color: #667eea;
+    }
+
+    .impact-number {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .impact-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #1a202c;
+      margin-bottom: 12px;
+    }
+
+    .impact-desc {
+      font-size: 15px;
+      color: #4a5568;
+      line-height: 1.6;
+    }
+
+    .discovery-box {
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      padding: 24px 32px;
+      border-radius: 10px;
+      margin: 24px 0;
+      border-left: 5px solid #fa709a;
+    }
+
+    .discovery-box strong {
+      color: #7c2d12;
+      font-size: 1.1rem;
+    }
+
+    .discovery-box p {
+      color: #7c2d12;
+      margin: 8px 0 0 0;
+      font-size: 16px;
+    }
+  .content-wide {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="logo">XModBench</a>
+      <ul class="nav-links">
+        <li><a href="#abstract">Abstract</a></li>
+        <li><a href="#design">Design</a></li>
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#citation">Citation</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="section hero">
+    <div class="container">
+      <div class="title-container">
+        <h1 class="hero-title">XModBench: Benchmarking Cross-Modal Capabilities and Consistency in Omni-Language Models</h1>
+        <p class="hero-subtitle">A comprehensive tri-modal benchmark for evaluating cross-modal consistency across audio, vision, and text in omni-modal large language models</p>
+      </div>
+      
+      <div class="authors-section">
+        <div class="authors">
+          <span class="author-block">
+            <a href="https://xingruiwang.github.io/">Xingrui Wang</a><sup>1,2</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://joellliu.github.io/">Jiang Liu</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://wikichao.github.io/">Chao Huang</a><sup>1,3</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://www.xiaodongyu.me/">Xiaodong Yu</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://zewang95.github.io/">Ze Wang</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://sunxm2357.github.io/">Ximeng Sun</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://jialianwu.com/">Jialian Wu</a><sup>1</sup>
+          </span>
+        </div>
+        <div class="authors">
+          <span class="author-block">
+            <a href="https://www.cs.jhu.edu/~ayuille/">Alan Yuille</a><sup>2</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://www.microsoft.com/en-us/research/people/">Emad Barsoum</a><sup>1</sup>,
+          </span>
+          <span class="author-block">
+            <a href="https://zicliu.wixsite.com/mysite">Zicheng Liu</a><sup>1</sup>
+          </span>
+        </div>
+
+        <div class="affiliations">
+          <span><sup>1</sup>Advanced Micro Devices, <sup>2</sup>Johns Hopkins University, <sup>3</sup>University of Rochester</span>
+        </div>
+
+        <div class="publication-links">
+          <a href="https://arxiv.org/abs/2510.15148" class="btn">
+            <i class="fas fa-file-alt"></i> Paper
+          </a>
+          <a href="https://github.com/XingruiWang/AudioBench" class="btn">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a href="https://huggingface.co/datasets/RyanWW/AudioBench_data" class="btn">
+            <i class="fas fa-database"></i> Dataset Card
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teaser Section -->
+  <section class="video-section">
+    <div class="container is-max-desktop">
+      <img src="./static/images/teaser.png" alt="XModBench Teaser - Cross-modal benchmark overview" class="teaser-image">
+      <p class="video-description">
+        <strong>XModBench</strong> contains 60K multiple-choice questions across five task families and systematically covers all six cross-modality directions, enabling diagnosis of task competence, modality disparity, and directional imbalance. 
+        Experiments show that even the strongest model, Gemini 2.5 Pro, (i) struggles with spatial and temporal reasoning, achieving less than 60% accuracy, 
+        (ii) suffers from modality disparities, with performance dropping by over 20 points on average when audio inputs replace text, and 
+        (iii) exhibits directional imbalance, with a 9-point gap when using vision as context versus using text as context.
+      </p>
+    </div>
+  </section>
+
+  <!-- Abstract Section -->
+  <section class="section" id="abstract">
+    <div class="container">
+      <h2 class="section-title">Abstract</h2>
+      <div class="content">
+        <p>
+          Omni-modal large language models (OLLMs) aim to unify audio, vision, and text understanding within a single framework. 
+          While existing benchmarks have advanced multimodal evaluation, it remains unclear whether OLLMs achieve modality-invariant reasoning or inherit modality-specific biases. 
+          We introduce <span class="highlight">XModBench</span>, a large-scale tri-modal benchmark explicitly designed to measure cross-modal consistency.
+        </p>
+        <p>
+          XModBench contains 60K multiple-choice questions across five task families and systematically covers all six cross-modality directions, enabling diagnosis of task competence, modality disparity, and directional imbalance. 
+          The findings suggest that OLLMs fall short of modality-invariant reasoning, and XModBench provides a fundamental diagnostic tool for evaluating and improving their overall cross-modal competence.
+        </p>
+      </div>
+
+
+      <!-- Key Stats -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-number">60K+</div>
+          <div class="stat-label">Question-Answer Pairs</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Cross-Modal Directions</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Task Families</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-number">17</div>
+          <div class="stat-label">Subtasks</div>
+        </div>
+      </div>
+      <!-- <img src="./static/images/distribution.png" alt="Cross-modal configuration diagram" class="section-image distribution-image"> -->
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Benchmark Design Section -->
+  <section class="section" id="design">
+    <div class="container">
+      <h2 class="section-title">Benchmark Design</h2>
+      
+      <div class="content">
+        <h3 class="section-subtitle">Core Innovation: Modality-Balanced Configuration</h3>
+        <p>
+          The central objective of XModBench is to evaluate whether models preserve <strong>cross-modal consistency</strong> when the same semantic content appears in different modalities. Each item is a four-choice multiple-choice question consisting of a <strong>&lt;context&gt;</strong> (question stem) and four <strong>&lt;candidates&gt;</strong> (answer options).
+        </p>
+        <p>
+          By systematically permuting <strong>text (T)</strong>, <strong>vision (V)</strong>, and <strong>audio (A)</strong> across the context and candidates, we generate <strong>six modality configurations</strong> of the same question:
+        </p>
+        <ul>
+          <li><strong>Audio → Text (A→T)</strong>: Audio context, text candidates</li>
+          <li><strong>Audio → Vision (A→V)</strong>: Audio context, visual candidates</li>
+          <li><strong>Text → Audio (T→A)</strong>: Text context, audio candidates</li>
+          <li><strong>Text → Vision (T→V)</strong>: Text context, visual candidates</li>
+          <li><strong>Vision → Audio (V→A)</strong>: Visual context, audio candidates</li>
+          <li><strong>Vision → Text (V→T)</strong>: Visual context, text candidates</li>
+        </ul>
+      </div>
+
+      <img src="./static/images/Figure1.jpg" alt="Cross-modal configuration diagram" class="section-image pipeline-image">
+
+      <div class="content">
+        <h3 class="section-subtitle">Three Diagnostic Properties</h3>
+        <p>
+          This balanced design enables unprecedented diagnosis of cross-modal consistency through three complementary evaluation dimensions:
+        </p>
+        
+        <ol style="margin-top: 24px;">
+          <li style="margin-bottom: 24px;">
+            <strong style="color: #2b6cb0; font-size: 1.1rem;">Task Competence</strong><br>
+            <span style="color: #4a5568; line-height: 1.7;">
+              By averaging accuracy across all six modality configurations, we obtain a fair measure of a model's overall capability for each task, independent of modality-specific biases. This reveals which fundamental capabilities models truly possess versus which they fake through modality shortcuts.
+            </span>
+            <div style="margin-top: 12px;">
+              <a href="#results" style="color: #2b6cb0; font-weight: 500; text-decoration: none; border-bottom: 2px solid #2b6cb0; padding-bottom: 2px;">
+                → See task-by-task performance analysis
+              </a>
+            </div>
+          </li>
+
+          <li style="margin-bottom: 24px;">
+            <strong style="color: #2b6cb0; font-size: 1.1rem;">Modality Disparity</strong><br>
+            <span style="color: #4a5568; line-height: 1.7;">
+              By presenting semantically identical questions under different modality configurations, we isolate modality as the only variable. Accuracy differences reveal which modalities models handle best or worst—for example, comparing T→A vs T→V shows whether models understand audio or vision better when given the same text context.
+            </span>
+            <div style="margin-top: 12px;">
+              <a href="#results" style="color: #2b6cb0; font-weight: 500; text-decoration: none; border-bottom: 2px solid #2b6cb0; padding-bottom: 2px;">
+                → See modality disparity findings (audio drops 49 points vs text)
+              </a>
+            </div>
+          </li>
+
+          <li style="margin-bottom: 24px;">
+            <strong style="color: #2b6cb0; font-size: 1.1rem;">Directional Imbalance</strong><br>
+            <span style="color: #4a5568; line-height: 1.7;">
+              By examining inverse settings—swapping context and candidate modalities (e.g., V→T vs T→V)—we expose asymmetries in cross-modal grounding. Large gaps indicate that models perform better in certain directions due to training data imbalances, rather than achieving true bidirectional understanding.
+            </span>
+            <div style="margin-top: 12px;">
+              <a href="#results" style="color: #2b6cb0; font-weight: 500; text-decoration: none; border-bottom: 2px solid #2b6cb0; padding-bottom: 2px;">
+                → See directional imbalance analysis (9-17 point gaps discovered)
+              </a>
+            </div>
+          </li>
+        </ol>
+
+        <!-- <div class="discovery-box" style="margin-top: 32px;">
+          <strong>💡 Why This Matters</strong>
+          <p>Traditional benchmarks measure capability in isolation. XModBench measures <strong>consistency</strong>—whether models truly understand semantic content regardless of how it's presented. Our results show that even SOTA models fail this fundamental test, exhibiting 10-49 point swings based purely on modality configuration.</p>
+        </div> -->
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Tasks Section -->
+  <section class="section" id="tasks">
+    <div class="container">
+      <h2 class="section-title">Task Taxonomy</h2>
+
+      <div class="content" style="text-align: center;">
+        <img src="./static/images/distribution.png" alt="Cross-modal configuration diagram" style="max-width: 40%;text-align: center;">
+
+        <p>
+          XModBench covers <strong>5 task families</strong> with <strong>17 subtasks</strong>, spanning perception, spatial reasoning, temporal reasoning, linguistic understanding, and external knowledge. Each task is formulated in the multiple-choice format and follows the modality-balanced configuration.
+        </p>
+      </div>
+
+      <div class="task-grid">
+
+        <div class="task-card">
+          <div class="task-icon">👁️</div>
+          <h4>Task 1: Perception</h4>
+          <p>Evaluates recognition of objects, activities, and scenes across modalities</p>
+          <ul class="subtask-list">
+            <li>General activities</li>
+            <li>Fine-grained activities</li>
+            <li>Natural environments</li>
+            <li>Musical instruments</li>
+            <li>Instrument compositions</li>
+          </ul>
+        </div>
+
+        <div class="task-card">
+          <div class="task-icon">📐</div>
+          <h4>Task 2: Spatial Reasoning</h4>
+          <p>Tests understanding of object positions and motion in 2D/3D space</p>
+          <ul class="subtask-list">
+            <li>2D Arrangement</li>
+            <li>3D Localization</li>
+            <li>3D Movement</li>
+          </ul>
+        </div>
+
+        <div class="task-card">
+          <div class="task-icon">⏱️</div>
+          <h4>Task 3: Temporal Reasoning</h4>
+          <p>Assesses comprehension of event order and frequency across time</p>
+          <ul class="subtask-list">
+            <li>Temporal Order</li>
+            <li>Temporal Counting</li>
+            <li>Temporal Calculation</li>
+          </ul>
+        </div>
+
+        <div class="task-card">
+          <div class="task-icon">🗣️</div>
+          <h4>Task 4: Linguistic Understanding</h4>
+          <p>Unifies OCR and ASR in cross-modal settings with affective understanding</p>
+          <ul class="subtask-list">
+            <li>Recognition (OCR/ASR)</li>
+            <li>Translation (EN-ZH)</li>
+            <li>Emotion Classification</li>
+          </ul>
+        </div>
+
+        <div class="task-card">
+          <div class="task-icon">🌐</div>
+          <h4>Task 5: External Knowledge</h4>
+          <p>Links multimodal content with world knowledge and cultural understanding</p>
+          <ul class="subtask-list">
+            <li>Music Genre</li>
+            <li>Movie Recognition</li>
+            <li>Singer Identification</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="content" style="margin-top: 48px;">
+        <h3 class="section-subtitle">Data Construction Pipeline</h3>
+        <p>
+          The benchmark is built through a rigorous three-stage pipeline:
+        </p>
+        <ol>
+          <li><strong>Cross-Modal Data Collection</strong>: Combining re-annotated datasets (VGG-Sound, STARSS23), synthetic generation (TTS, rendered text), and targeted web collection (YouTube trailers, singer portraits)</li>
+          <li><strong>Question Generation</strong>: Task-specific templates refined with GPT, semantically challenging distractors, and diversified prompts</li>
+          <li><strong>Quality Assurance</strong>: LLM filtering, human verification, and iterative testing to ensure accuracy and eliminate ambiguities</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Results Section -->
+  <section class="section" id="results">
+    <div class="container">
+      <h2 class="section-title">Key Findings</h2>
+      
+      <div class="content">
+        <p>
+          We evaluated 13 state-of-the-art omni-modal models including Gemini 2.5 Pro, Qwen2.5-Omni, EchoInk-R1, and others. The results reveal systematic weaknesses across three dimensions:
+        </p>
+
+        <h3 class="section-subtitle">1. Task Competence Gaps</h3>
+        <p>
+          Models show strong performance on perception and linguistic tasks (best model achieves ~75%), but struggle significantly with spatial and temporal reasoning:
+        </p>
+        <ul>
+          <li><strong>Gemini 2.5 Pro</strong>: 75.9% (Perception), 76.8% (Linguistic), but only 50.1% (Spatial) and 60.8% (Temporal)</li>
+          <li><strong>Spatial & Temporal Reasoning</strong>: All models drop 15-25 points compared to perception tasks</li>
+          <li><strong>Open-source Models</strong>: Show even larger gaps, with some scoring below 40% on spatial/temporal tasks</li>
+        </ul>
+
+        <h3 class="section-subtitle">2. Modality Disparity</h3>
+        <p>
+          Performance varies dramatically across modalities, with audio being the most challenging:
+        </p>
+        <ul>
+          <li><strong>Audio vs. Text</strong>: Models drop 20-49 points when audio replaces text inputs</li>
+          <li><strong>Audio vs. Vision</strong>: 33-point average gap, showing difficulty in aligning heterogeneous signals</li>
+          <li><strong>Vision vs. Text</strong>: Smaller but still significant ~15-point disparity</li>
+          <li><strong>Consistency (Std. Dev.)</strong>: Best models show 10-12 point standard deviation across configurations</li>
+        </ul>
+
+        <h3 class="section-subtitle">3. Directional Imbalance</h3>
+        <p>
+          Models exhibit asymmetric performance when context and candidate modalities are swapped:
+        </p>
+        <ul>
+          <li><strong>Vision↔Text</strong>: 9-17 point gaps between V→T and T→V directions</li>
+          <li><strong>Audio↔Text</strong>: 6-8 point asymmetries in bidirectional settings</li>
+          <li><strong>Audio↔Vision</strong>: Nearly symmetric but with much lower overall accuracy</li>
+          <li><strong>Root Cause</strong>: Training data imbalance—models heavily trained on image-to-text QA, less on inverse directions</li>
+        </ul>
+        <h3 class="section-subtitle">Human Performance</h3>
+        <p>
+          Human evaluation on sampled questions shows consistently high performance across all modalities:
+        </p>
+        <ul>
+          <li><strong>Overall Average</strong>: 91.5% accuracy (vs. 70.6% for best model)</li>
+          <li><strong>Perception</strong>: 91.0% (vs. 75.9%)</li>
+          <li><strong>Spatial</strong>: 89.7% (vs. 50.1%)</li>
+          <li><strong>Temporal</strong>: 88.9% (vs. 60.8%)</li>
+          <li><strong>Linguistic</strong>: 93.9% (vs. 76.8%)</li>
+          <li><strong>Knowledge</strong>: 93.9% (vs. 89.3%)</li>
+        </ul>
+        <p>
+          This demonstrates substantial room for improvement, especially in spatial and temporal reasoning where the human-model gap exceeds 25-30 points.
+        </p>
+      </div>
+
+  </div>
+</section>
+
+<div class="section-divider" style="max-width: 100%;"></div>
+
+  <!-- Visual representation of results -->
+   
+  <div class="container">
+<div class="content-wide">
+  <div class="stats-grid" style="margin-top: 48px;">
+    <div class="stat-box" style="background: #fff5f5; border-color: #fc8181;">
+      <div class="stat-number" style="color: #c53030;">-49</div>
+      <div class="stat-label">Audio-Text Disparity</div>
+    </div>
+    <div class="stat-box" style="background: #fffaf0; border-color: #f6ad55;">
+      <div class="stat-number" style="color: #c05621;">-33</div>
+      <div class="stat-label">Audio-Vision Gap</div>
+    </div>
+    <div class="stat-box" style="background: #f0fff4; border-color: #68d391;">
+      <div class="stat-number" style="color: #2f855a;">9</div>
+      <div class="stat-label">V→T vs T→V Imbalance</div>
+    </div>
+    <div class="stat-box" style="background: #ebf8ff; border-color: #63b3ed;">
+      <div class="stat-number" style="color: #2b6cb0;">21%</div>
+      <div class="stat-label">Gap to Human Performance</div>
+    </div>
+  </div>
+</div>
+  </div>
+
+  <div class="content" style="margin-top: 48px;">
+    <h3 class="section-subtitle">Model-Specific Insights</h3>
+    
+    <p><strong>Gemini 2.5 Pro</strong> (Best Overall: 70.6% avg, 11.7 std)</p>
+    <ul>
+      <li>Strongest across all task families, but still struggles with audio modality</li>
+      <li>Relatively balanced performance (lowest std. dev. among top models)</li>
+      <li>Excels at external knowledge (89.3%) but weak on spatial reasoning (50.1%)</li>
+    </ul>
+
+    <p><strong>Qwen2.5-Omni</strong> (Best Open-Source: 58.6% avg, 10.1 std)</p>
+    <ul>
+      <li>Most consistent open-source model with lowest variance</li>
+      <li>Strong linguistic understanding (74.1%) comparable to Gemini</li>
+      <li>Significant drop on spatial (38.4%) and temporal (32.3%) tasks</li>
+    </ul>
+
+    <p><strong>EchoInk-R1</strong> (Strong Open Alternative: 59.2% avg, 11.3 std)</p>
+    <ul>
+      <li>Competitive with Qwen2.5-Omni, slightly higher variance</li>
+      <li>Best open-source performance on temporal reasoning (37.1%)</li>
+      <li>Good linguistic capabilities (73.3%) but weaker audio grounding</li>
+    </ul>
+
+    <p><strong>Key Takeaway</strong>: Even the best models fall far short of modality-invariant reasoning, with systematic biases toward text and vision over audio, and asymmetric performance when modality roles are reversed.</p>
+  </div>
+</body>
+</html>

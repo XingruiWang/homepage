@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publications>
+  <entries>
+    <entry file="xmodbench.xml" />
+    <entry file="keyvid.xml" />
+    <entry file="spatialreasoner.xml" />
+    <entry file="spatial457.xml" />
+    <entry file="dynsuperclevr.xml" />
+    <entry file="po3dvqa.xml" />
+    <entry file="superclevr.xml" />
+    <entry file="hve.xml" />
+  </entries>
+
+  <topic-labels>
+    <topic key="spatial" label="Spatial Reasoning" />
+    <topic key="multimodal" label="Multimodal" />
+    <topic key="video" label="Video Generation" />
+  </topic-labels>
+</publications>
