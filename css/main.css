@@ -278,7 +278,7 @@ section { margin-bottom: 52px; }
 
 .pub {
   display: grid;
-  grid-template-columns: 148px 1fr;
+  grid-template-columns: 200px 1fr;
   gap: 18px;
   padding: 20px 0;
   border-bottom: 1px solid var(--border);
@@ -288,7 +288,7 @@ section { margin-bottom: 52px; }
 .pub[data-hidden="true"] { display: none; }
 
 .pub-thumb {
-  width: 148px;
+  width: 200px;
   aspect-ratio: 4/3;
   border-radius: 3px;
   background: var(--blue-bg);
@@ -297,7 +297,7 @@ section { margin-bottom: 52px; }
   flex-shrink: 0;
 }
 .pub-thumb-placeholder {
-  width: 148px;
+  width: 200px;
   aspect-ratio: 4/3;
   border-radius: 3px;
   background: var(--blue-bg);
