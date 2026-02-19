@@ -152,7 +152,7 @@ function buildFilterButtons(topicCounts, topicLabels) {
   const allBtn = document.createElement('button');
   allBtn.className = 'fbtn active';
   allBtn.dataset.filter = 'all';
-  allBtn.textContent = 'All';
+  allBtn.textContent = 'All topics';
   filtersEl.appendChild(allBtn);
 
   for (const [key, count] of sorted) {
