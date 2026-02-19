@@ -449,7 +449,7 @@ footer {
   gap: 4px;
 }
 .footer-map {
-  justify-self: center;
+  justify-self: end;
 }
 a#clustrmaps-widget-v2, #clustrmaps-widget-v2 { display: inline; }
 footer a { color: var(--text-3); }
